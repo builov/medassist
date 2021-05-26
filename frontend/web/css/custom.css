@@ -1,0 +1,79 @@
+
+
+
+/*table.queue {*/
+/*  margin-top:1em;*/
+/*}*/
+table.queue > tbody > tr > td {
+  line-height: 2.2;
+}
+table.queue > tbody > tr:first-child > td  {
+  border-top:0;
+}
+table.queue .btn {
+  line-height: 1;
+}
+table.queue > tbody > tr > td:last-child  {
+  text-align: right;
+}
+/*.pageowner {*/
+/*  margin-bottom: 1.2em;*/
+/*}*/
+
+
+/* chat */
+.chat-header {
+  padding: 1em;
+  margin-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  color: #fff!important;
+}
+.send-but {
+  width:30px;
+}
+.chat {
+  background-color: #fff;
+  position:fixed;
+  bottom:0;
+  width:40%;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  /*box-shadow: 0 1px 4px 0 rgb(0 0 0 / 37%);*/
+}
+.chat-body {
+  min-height:300px;
+  max-height:600px;
+  overflow-y: scroll;
+  padding:1em;
+}
+
+.chat .input-wrap {
+  position:relative;
+}
+.send-but {
+  /*float:right;*/
+  margin:10px;
+  position:absolute;
+  top:0;
+  right:0;
+}
+
+#messageform-message {
+  padding-right:50px;
+}
+
+#custom-complaints a {
+  border: 1px solid #000;
+  margin: 10px;
+  padding: 0 5px 2px;
+  text-decoration: none;
+  color: #000;
+}
+#custom-complaints p img {
+  width:10px;
+  margin-left: 10px;
+  cursor:pointer;
+}
+
+
+
