@@ -155,7 +155,7 @@ AppAsset::register($this);
                             }
                             else {
                                 $('#complaintsform-' + item[0]).prop('checked', true);
-                                $('.field-complaintsform-' + item[0]).next().slideDown();
+                                $('.field-complaintsform-' + item[0]).next('.children-fields').css('display','block');
                             }
                         });
                     }
@@ -239,16 +239,23 @@ AppAsset::register($this);
 
         //todo Жалобы
 
-        $('#complaints-form input:checkbox:not(.children-fields input:checkbox)').on('change', function() {
-
-            if ($(this).is(':checked')) {
-                $(this).parents('.form-group').next().slideDown();
-            } else {
-                $(this).parents('.form-group').next().slideUp();
-            }
-        });
+        // $('#complaints-form input:checkbox:not(.children-fields input:checkbox)').on('change', function() {
+        //
+        //     if ($(this).is(':checked')) {
+        //         $(this).parents('.form-group').next('.children-fields').slideDown();
+        //     } else {
+        //         $(this).parents('.form-group').next('.children-fields').slideUp();
+        //     }
+        // });
 
         $('#complaints-form input:checkbox').on('change', function() {
+
+            if ($(this).is(':checked')) {
+                $(this).parents('.form-group').next('.children-fields').css('display','block')
+            } else {
+                $(this).parents('.form-group').next('.children-fields').css('display','none')
+            }
+
             // console.log(session);
             // console.log(doctor);
             // console.log(patient);
