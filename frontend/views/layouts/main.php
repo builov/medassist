@@ -152,7 +152,7 @@ AppAsset::register($this);
         }
 
 
-        if ($('.chat-page').length) var timer = setInterval(refresh, 2000, [session, doctor]);
+        if ($('.chat-page').length) var timer = setInterval(refresh, 1000, [session, doctor]);
 
 
 
@@ -200,6 +200,7 @@ AppAsset::register($this);
                 complete: function() {},
                 success: function(data) {
                     // console.log(data);
+                    $('#messages-area').empty();
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
