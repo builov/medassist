@@ -83,3 +83,8 @@ table.queue > tbody > tr > td:last-child  {
   z-index: 1000;
 }
 
+.children-fields {
+  padding-left: 2em;
+  display:none;
+}
+

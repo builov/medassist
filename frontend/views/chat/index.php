@@ -67,9 +67,24 @@ $this->title = 'МедЧат';
                 <?= $form->field($complaints_form, 'complaint9')->checkbox() ?>
                 <?= $form->field($complaints_form, 'complaint10')->checkbox() ?>
                 <?= $form->field($complaints_form, 'complaint11')->checkbox() ?>
+                <div class="children-fields">
+                    <?= $form->field($complaints_form, 'complaint11_1')->checkbox() ?>
+                    <?= $form->field($complaints_form, 'complaint11_2')->checkbox() ?>
+                    <?= $form->field($complaints_form, 'complaint11_3')->checkbox() ?>
+                    <?= $form->field($complaints_form, 'complaint11_4')->checkbox() ?>
+                </div>
                 <?= $form->field($complaints_form, 'complaint12')->checkbox() ?>
+                <div class="children-fields">
+                    <?= $form->field($complaints_form, 'complaint12_1')->checkbox() ?>
+                    <?= $form->field($complaints_form, 'complaint12_2')->checkbox() ?>
+                    <?= $form->field($complaints_form, 'complaint12_3')->checkbox() ?>
+                </div>
                 <?= $form->field($complaints_form, 'complaint13')->checkbox() ?>
                 <?= $form->field($complaints_form, 'complaint14')->checkbox() ?>
+                <div class="children-fields">
+                    <?= $form->field($complaints_form, 'complaint14_1')->checkbox() ?>
+                    <?= $form->field($complaints_form, 'complaint14_2')->checkbox() ?>
+                </div>
                 <?= $form->field($complaints_form, 'complaint15')->checkbox() ?>
                 <?= $form->field($complaints_form, 'complaint16')->checkbox() ?>
                 <?= $form->field($complaints_form, 'complaint17')->checkbox() ?>

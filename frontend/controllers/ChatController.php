@@ -164,7 +164,7 @@ class ChatController extends Controller
                 $complaint = Complaints::find()->where(['id' => $data[1]])->andWhere(['uid' => Yii::$app->user->id])->one();
                 $complaint->delete();
             }
-            else {
+            else { //todo добавить в Complaints поле parent и при удалении родительской удалять также все дочерние жалобы
                 $r = Complaints::find()->where(['session' => $data[0]])->andWhere(['form_field' => $data[3]])->andWhere(['uid' => Yii::$app->user->id])->all();
                 foreach ($r as $complaint)
                 {

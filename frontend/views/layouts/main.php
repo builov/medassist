@@ -101,6 +101,8 @@ AppAsset::register($this);
 
     $(function() {
 
+
+
         $(document).keyup(function(e) {
             if (e.key === "Enter" || e.keyCode === 13)
             {
@@ -121,12 +123,6 @@ AppAsset::register($this);
                         saveСomplaint(data, 1);
                     }
                 }
-
-
-                // console.log($(document.activeElement).attr('id'));
-                // console.log($('#messageform-message'));
-
-
             }
         });
 
@@ -157,7 +153,10 @@ AppAsset::register($this);
                             {
                                 $('#custom-complaints').append($('<p>', {class: _class, text: item[1]}).append($('<img>', {src: '/img/delete.jpg'}).attr('data-id', item[2])));
                             }
-                            else $('#complaintsform-' + item[0]).prop('checked', true);
+                            else {
+                                $('#complaintsform-' + item[0]).prop('checked', true);
+                                $('.field-complaintsform-' + item[0]).next().slideDown();
+                            }
                         });
                     }
 
@@ -240,7 +239,16 @@ AppAsset::register($this);
 
         //todo Жалобы
 
-        $('#complaints-form input').on('change', function() {
+        $('#complaints-form input:checkbox:not(.children-fields input:checkbox)').on('change', function() {
+
+            if ($(this).is(':checked')) {
+                $(this).parents('.form-group').next().slideDown();
+            } else {
+                $(this).parents('.form-group').next().slideUp();
+            }
+        });
+
+        $('#complaints-form input:checkbox').on('change', function() {
             // console.log(session);
             // console.log(doctor);
             // console.log(patient);
@@ -282,7 +290,7 @@ AppAsset::register($this);
                 beforeSend: function() {},
                 complete: function() {},
                 success: function(data) {
-                    console.log(params);
+                    // console.log(params);
                     if (params[0] == 'custom') { //если это удаление жалобы "Иное"
                         // $('#custom-complaints').empty();
                         $('.complaint20-' + params[1]).remove();
