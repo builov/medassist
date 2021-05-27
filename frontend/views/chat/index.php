@@ -114,7 +114,7 @@ $this->title = 'МедЧат';
 
                         <?php ActiveForm::end(); ?>
 
-
+                        <a class="clear-chat" href="">Очистить чат</a>
 
                     </div>
                 </div>

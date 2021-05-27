@@ -47,7 +47,8 @@ return [
                 'complaint/delete' => 'chat/delete-complaint',
                 'add-message' => 'chat/add-message',
                 'refresh-complaints' => 'chat/refresh-complaints',
-                'create-chat-message' => 'chat/create-chat-message'
+                'create-chat-message' => 'chat/create-chat-message',
+                'clear-chat' => 'chat/clear-chat'
             ],
         ],
         

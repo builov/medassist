@@ -196,10 +196,27 @@ class ChatController extends Controller
                     return Yii::$app->response->statusCode = 200;
             }
             else return Yii::$app->response->statusCode = 403;
+        }
+    }
 
+    public function actionClearChat()
+    {
+        if (Yii::$app->request->isPost)
+        {
+            $data = Yii::$app->request->post('data');
+//            $data[0] - session
+//            $data[1] - doctor
 
-
-
+            if ($data[1] == Yii::$app->user->id)
+            {
+                $r = Messages::find()->where(['session' => $data[0]])->andWhere(['uid' => Yii::$app->user->id])->all();
+                foreach ($r as $message)
+                {
+                    $message->delete();
+                }
+                return Yii::$app->response->statusCode = 200;
+            }
+            else return Yii::$app->response->statusCode = 403;
         }
     }
 }

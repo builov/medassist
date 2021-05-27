@@ -82,7 +82,26 @@ AppAsset::register($this);
 
     $(function() {
 
-        function refreshComplaintsForm(params)
+        $(document).keyup(function(e) {
+            if (e.key === "Enter" || e.keyCode === 13)
+            {
+                if ($(document.activeElement).attr('id') == 'messageform-message')
+                {
+                    console.log($(document.activeElement).attr('id'));
+                    var text = $('#messageform-message').val();
+                    var data = [session, doctor, text];
+                    createChatMessage(data);
+                }
+
+
+                // console.log($(document.activeElement).attr('id'));
+                // console.log($('#messageform-message'));
+
+
+            }
+        });
+
+        function refresh(params)
         {
             $.ajax({
                 url: '/refresh-complaints',
@@ -99,33 +118,32 @@ AppAsset::register($this);
                     var fields = response['complaints'];
                     $('#complaints-form input:checkbox').prop('checked', false);
                     $('#custom-complaints p').remove();
-                    fields.forEach(function(item) {
-                        // console.log(item);
-                        var _class = item[0] + '-' + item[2];
-                        if (item[0] == 'complaint20' && !$('#custom-complaints .'+ _class).length)
-                        {
-                            $('#custom-complaints').append($('<p>', {class: _class, text: item[1]}).append($('<img>', {src: '/img/delete.jpg'}).attr('data-id', item[2])));
-                        }
-                        else $('#complaintsform-' + item[0]).prop('checked', true);
-                    });
+
+                    if (typeof fields !== 'undefined')
+                    {
+                        fields.forEach(function(item) {
+                            // console.log(item);
+                            var _class = item[0] + '-' + item[2];
+                            if (item[0] == 'complaint20' && !$('#custom-complaints .'+ _class).length)
+                            {
+                                $('#custom-complaints').append($('<p>', {class: _class, text: item[1]}).append($('<img>', {src: '/img/delete.jpg'}).attr('data-id', item[2])));
+                            }
+                            else $('#complaintsform-' + item[0]).prop('checked', true);
+                        });
+                    }
 
                     //Чат
                     var messages = response['messages'];
-                    messages.forEach(function(item) {
-                        // console.log(item);
-
-                        // var id = $(this).attr('data-id')
-
-                        if (!$('#messages-area p[data-id = ' + item[0] + ']').length)
-                        {
-                            $('#messages-area').append($('<p>', {text: item[1]}).attr('data-id', item[0]));
-                        }
-
-                        //
-                    });
-
-
-
+                    if (typeof messages !== 'undefined')
+                    {
+                        messages.forEach(function(item) {
+                            // console.log(item);
+                            if (!$('#messages-area p[data-id = ' + item[0] + ']').length)
+                            {
+                                $('#messages-area').append($('<p>', {text: item[1]}).attr('data-id', item[0]));
+                            }
+                        });
+                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -133,13 +151,8 @@ AppAsset::register($this);
             });
         }
 
-        function refresh()
-        {
-            refreshComplaintsForm([session, doctor]);
-            // refreshChat([session, doctor]);
-        }
 
-        if ($('.chat-page').length) var timer = setInterval(refresh, 1000);
+        if ($('.chat-page').length) var timer = setInterval(refresh, 2000, [session, doctor]);
 
 
 
@@ -171,6 +184,28 @@ AppAsset::register($this);
                 }
             });
         }
+
+        $('a.clear-chat').on('click', function(e)
+        {
+            e.preventDefault();
+
+            var data = [session, doctor];
+
+            $.ajax({
+                url: '/clear-chat',
+                type: 'post',
+                data: {data: data},
+                dataType: 'text',
+                beforeSend: function() {},
+                complete: function() {},
+                success: function(data) {
+                    // console.log(data);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        });
 
 
         //todo Жалобы
