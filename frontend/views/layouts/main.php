@@ -112,7 +112,7 @@ AppAsset::register($this);
                     //Чат
                     var messages = response['messages'];
                     messages.forEach(function(item) {
-                        console.log(item);
+                        // console.log(item);
 
                         // var id = $(this).attr('data-id')
 
@@ -163,7 +163,7 @@ AppAsset::register($this);
                 beforeSend: function() {},
                 complete: function() {},
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     $('#messageform-message').val('');
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
@@ -196,7 +196,7 @@ AppAsset::register($this);
         });
         $('#custom-complaints').on('click', 'img', function() {
 
-            console.log($(this).attr('data-id'));
+            // console.log($(this).attr('data-id'));
 
             var id = $(this).attr('data-id')
             var data = ['custom', id];
@@ -207,7 +207,7 @@ AppAsset::register($this);
         {
             var action = (field_state) ? 'add' : 'delete';
 
-            console.log(params);
+            // console.log(params);
 
             $.ajax({
                 url: '/complaint/' + action,
@@ -217,7 +217,7 @@ AppAsset::register($this);
                 beforeSend: function() {},
                 complete: function() {},
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     if (params[0] == 'custom') $('#custom-complaints p').remove();
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
