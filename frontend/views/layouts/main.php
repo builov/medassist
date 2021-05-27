@@ -92,6 +92,16 @@ AppAsset::register($this);
                     var data = [session, doctor, text];
                     createChatMessage(data);
                 }
+                else if ($(document.activeElement).attr('id') == 'complaintsform-complaint20')
+                {
+                    if ($(document.activeElement).val().trim() != '')
+                    {
+                        var field_name = (document.activeElement.name).match(/ComplaintsForm\[(.+)\]/)[1];
+                        var description = $(document.activeElement).val().trim();
+                        var data = [session, doctor, patient, field_name, description];
+                        saveСomplaint(data, 1);
+                    }
+                }
 
 
                 // console.log($(document.activeElement).attr('id'));
@@ -253,8 +263,15 @@ AppAsset::register($this);
                 beforeSend: function() {},
                 complete: function() {},
                 success: function(data) {
-                    // console.log(data);
-                    if (params[0] == 'custom') $('#custom-complaints p').remove();
+                    console.log(params);
+                    if (params[0] == 'custom') { //если это удаление жалобы "Иное"
+                        // $('#custom-complaints').empty();
+                        $('.complaint20-' + params[1]).remove();
+                    }
+                    else if (params[3] == 'complaint20') //ели это отправка жалобы "Иное"
+                    {
+                        $('#complaintsform-complaint20').val('');
+                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
