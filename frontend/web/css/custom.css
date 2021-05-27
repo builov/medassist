@@ -1,5 +1,7 @@
 
-
+.wrap > .container {
+  padding: 20px 15px 20px;
+}
 
 /*table.queue {*/
 /*  margin-top:1em;*/
@@ -75,5 +77,9 @@ table.queue > tbody > tr > td:last-child  {
   cursor:pointer;
 }
 
-
+#logout-form form {
+  position:absolute;
+  right:0;
+  z-index: 1000;
+}
 

@@ -128,6 +128,9 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+        $session = Yii::$app->session;
+        $session->close();
+
         Yii::$app->user->logout();
 
         return $this->goHome();
