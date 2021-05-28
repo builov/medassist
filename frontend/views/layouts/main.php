@@ -174,7 +174,7 @@ AppAsset::register($this);
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                 }
             });
         }
@@ -208,7 +208,7 @@ AppAsset::register($this);
                     $('#messageform-message').val('');
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                 }
             });
         }
@@ -231,7 +231,7 @@ AppAsset::register($this);
                     $('#messages-area').empty();
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                 }
             });
         });
@@ -308,7 +308,7 @@ AppAsset::register($this);
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                 }
             });
         }
